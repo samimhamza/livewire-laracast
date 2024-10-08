@@ -920,7 +920,7 @@
                 </header>
 
                 <main class="mt-6">
-                    <livewire:greeter>
+                    <livewire:search>
                 </main>
             </div>
         </div>
