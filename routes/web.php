@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\ArticleIndex;
 use App\Livewire\Search;
 use App\Livewire\ShowArticle;
 use Illuminate\Support\Facades\Route;
@@ -7,9 +8,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/search', Search::class);
 Route::get('/articles/{article}', ShowArticle::class);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ArticleIndex::class);
 
 Route::middleware([
     'auth:sanctum',
