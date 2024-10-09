@@ -4,11 +4,11 @@ namespace App\Livewire;
 
 use App\Models\Article;
 use Livewire\Attributes\Title;
-use Livewire\Component;
 
-#[Title('Articles')]
-class ArticleIndex extends Component
+#[Title('Manage Articles')]
+class ArticleList extends AdminComponent
 {
+
     // public $articles = [];
 
     // public function mount()
@@ -16,11 +16,17 @@ class ArticleIndex extends Component
     //     $this->articles = Article::all();
     // }
 
+    public function delete(Article $article)
+    {
+        $article->delete();
+    }
+
     public function render()
     {
         return view(
-            'livewire.article-index',
+            'livewire.article-list',
             [
+
                 'articles' => Article::all()
             ]
         );
