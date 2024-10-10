@@ -7,4 +7,5 @@
             <p>{{ str($article->content)->words(30) }}</p>
         </div>
     @endforeach
+    <div class="mt-3">{{ $articles->links() }}</div>
 </div>

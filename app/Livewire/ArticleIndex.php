@@ -5,10 +5,12 @@ namespace App\Livewire;
 use App\Models\Article;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 #[Title('Articles')]
 class ArticleIndex extends Component
 {
+    use WithPagination;
     // public $articles = [];
 
     // public function mount()
@@ -21,7 +23,7 @@ class ArticleIndex extends Component
         return view(
             'livewire.article-index',
             [
-                'articles' => Article::all()
+                'articles' => Article::paginate(10)
             ]
         );
     }
