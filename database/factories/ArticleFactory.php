@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\NotificationEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,8 @@ class ArticleFactory extends Factory
         return [
             'title' => fake()->realText(50),
             'content' => fake()->realText(500),
+            'published' => fake()->boolean(),
+            'notifications' => fake()->randomElement([null, fake()->randomElements(NotificationEnum::class)]),
         ];
     }
 }

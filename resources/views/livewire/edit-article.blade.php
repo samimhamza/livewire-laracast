@@ -1,8 +1,11 @@
 <div class="m-auto w-1/2 mb-4">
-    <h3 class="text-lg text-gray-200 mb-3">Create Article</h3>
+    <h3 class="text-lg text-gray-200 mb-3">Edit Article</h3>
     <form wire:submit="save">
         <div class="mb-3">
-            <label class="block" for="article-title">Title</label>
+            <label wire:dirty.class="text-orange-400" wire:target="form.title" class="block" for="article-title">
+                Title
+                <span wire:dirty wire:target="form.title">*</span>
+            </label>
             <input type="text" class="p-2 w-full border rounded-md bg-gray-700 text-white" wire:model="form.title">
             <div>
                 @error('title')
@@ -11,7 +14,10 @@
             </div>
         </div>
         <div class="mb-3">
-            <label class="block" for="article-content">Content</label>
+            <label wire:dirty.class="text-orange-400" wire:target="form.content" class="block" for="article-content">
+                Content
+                <span wire:dirty wire:target="form.content">*</span>
+            </label>
             <textarea id="article-content"" class="p-2 w-full border rounded-md bg-gray-700 text-white" wire:model="form.content"></textarea>
             <div>
                 @error('content')
@@ -20,7 +26,53 @@
             </div>
         </div>
         <div class="mb-3">
-            <button class="text-gray-200 p-2 bg-indigo-700 hover:bg-indigo-900 rounded-sm" type="submit">
+            <label class="flex items-center" wire:dirty.class="text-orange-400" wire:target="form.published">
+                <input type="checkbox" name="published" wire:model.boolean="form.published" class="mr-2">
+                Published
+                <span wire:dirty wire:target="form.published">*</span>
+            </label>
+        </div>
+        <div class="mb-3">
+            <div>
+                <div class="mb-2" wire:dirty.class="text-orange-400"
+                    wire:target="form.notifications, form.allowNotifications">
+                    Notification Options
+                    <span wire:dirty wire:target="form.notifications, form.allowNotifications">*</span>
+                </div>
+                <div class="flex gap-6 mb-3">
+                    <label class="flex items-center">
+                        <input type="radio" value="true" class="mr-2"
+                            wire:model.boolean="form.allowNotifications">
+                        Yes
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" value="false" class="mr-2"
+                            wire:model.boolean="form.allowNotifications">
+                        No
+                    </label>
+                </div>
+                <div x-show="$wire.form.allowNotifications">
+                    <label class="flex items-center">
+                        <input type="checkbox" value="{{ $form->notificationEnum::EMAIL }}" class="mr-2"
+                            wire:model="form.notifications">
+                        Email
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" value="{{ $form->notificationEnum::SMS }}" class="mr-2"
+                            wire:model="form.notifications">
+                        SMS
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" value="{{ $form->notificationEnum::PUSH }}" class="mr-2"
+                            wire:model="form.notifications">
+                        PUSH
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <button class="text-gray-200 p-2 bg-blue-700 disable:opacity-50 disabled:bg-gray-500 rounded-sm"
+                type="submit" wire:dirty.class="hover:bg-blue-900" wire:dirty.remove.attr="disabled" disabled>
                 Save
             </button>
         </div>
