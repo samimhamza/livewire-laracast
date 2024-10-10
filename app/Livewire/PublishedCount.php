@@ -11,16 +11,18 @@ class PublishedCount extends Component
 {
     public $count = 0;
 
+    public $placeholderText = '';
+
     public function mount()
     {
-        sleep(2);
+        sleep(1);
         $this->count = Article::where('published', 'true')->count();
     }
 
     public function placeholder()
     {
         return view('livewire.placeholder', [
-            'message' => 'Published count is loading...'
+            'message' => $this->placeholderText,
         ]);
     }
 
