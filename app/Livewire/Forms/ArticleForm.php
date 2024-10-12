@@ -4,12 +4,16 @@ namespace App\Livewire\Forms;
 
 use App\Models\Article;
 use App\Enums\NotificationEnum;
+use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class ArticleForm extends Form
 {
     public ?Article $article;
+
+    #[Locked]
+    public int $id;
 
     public $notificationEnum = NotificationEnum::class;
 
@@ -25,6 +29,7 @@ class ArticleForm extends Form
 
     public function setArticle(Article $article)
     {
+        $this->id = $article->id;
         $this->title = $article->title;
         $this->content = $article->content;
         $this->published = $article->published;

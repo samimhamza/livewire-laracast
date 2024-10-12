@@ -4,13 +4,25 @@
             Create Article
         </a>
         <div>
-            <button class="text-gray-200 p-2 bg-blue-700 rounded-sm hover:bg-blue-900" wire:click="showAll()">All</button>
-            <button class="text-gray-200 p-2 bg-blue-700 rounded-sm hover:bg-blue-900"
-                wire:click="showPublished()">Published
+            <button @class([
+                'text-gray-200 p-2  rounded-sm hover:bg-blue-900',
+                'bg-gray-700' => $showOnlyPublished,
+                'bg-blue-700' => !$showOnlyPublished,
+            ]) wire:click="togglePublished(false)">All</button>
+            <button @class([
+                'text-gray-200 p-2 rounded-sm hover:bg-blue-900',
+                'bg-gray-700' => !$showOnlyPublished,
+                'bg-blue-700' => $showOnlyPublished,
+            ]) wire:click="togglePublished(true)">Published
                 (<livewire:published-count placeholder-text="loading" />)
             </button>
         </div>
     </div>
+    @if (session('status'))
+        <div class="text-center bg-green-700 text-gray-200">
+            {{ session('status') }}
+        </div>
+    @endif
     <div class="my-3">
         {{ $articles->links() }}
     </div>
