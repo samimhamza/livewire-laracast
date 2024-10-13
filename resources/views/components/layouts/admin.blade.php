@@ -20,7 +20,7 @@
             <div class="relative w-full max-w-2xl  lg:max-w-7xl">
                 <nav class="bg-gray-900">
                     <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-                        <div class="w-full block" id="navbar-default">
+                        <div class="w-full flex justify-between" id="navbar-default">
                             <ul
                                 class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
                                 <li>
@@ -30,6 +30,13 @@
                                 <li>
                                     <a wire:navigate href="/dashboard/articles"
                                         class="block py-2 px-3 text-blue-500">Manage Articles</a>
+                                </li>
+                            </ul>
+                            <ul
+                                class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+                                <li>
+                                    <a wire:navigate href="/logout" class="block py-2 px-3 text-blue-500">
+                                        logout</a>
                                 </li>
                             </ul>
                         </div>
