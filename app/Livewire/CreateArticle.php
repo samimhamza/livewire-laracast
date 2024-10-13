@@ -8,10 +8,12 @@ use App\NotificationEnum;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\WithFileUploads;
 
 #[Title('Creat Article')]
 class CreateArticle extends AdminComponent
 {
+    use WithFileUploads;
     public ArticleForm $form;
 
     public function save()

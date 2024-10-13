@@ -11,7 +11,7 @@ class Article extends Model
     /** @use HasFactory<\Database\Factories\ArticleFactory> */
     use HasFactory;
 
-    protected $fillable = ['title', 'content', 'published', 'notifications'];
+    protected $fillable = ['title', 'content', 'published', 'notifications', 'photo_path'];
 
     protected $casts = [
         'id' => 'integer',
