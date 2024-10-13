@@ -6,7 +6,7 @@ use App\Livewire\Forms\ArticleForm;
 use App\Models\Article;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Validate;
-use Livewire\Features\SupportFileUploads\WithFileUploads;
+use Livewire\WithFileUploads;
 
 class EditArticle extends AdminComponent
 {

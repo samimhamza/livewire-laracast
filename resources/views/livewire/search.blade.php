@@ -6,6 +6,9 @@
                 class="p-4 w-full rounded-md bg-gray-700 text-white" wire:offline.attr="disabled">
         </div>
     </form>
-
-    <livewire:search-results :results="$results" :show="!empty($searchText)">
+    @if (!empty($searchText))
+        <div wire:transition>
+            <livewire:search-results :results="$results">
+        </div>
+    @endif
 </div>

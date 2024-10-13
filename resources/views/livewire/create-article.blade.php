@@ -58,7 +58,7 @@
                         No
                     </label>
                 </div>
-                <div x-show="$wire.form.allowNotifications">
+                <div x-show="$wire.form.allowNotifications" wire:transition>
                     <label class="flex items-center">
                         <input type="checkbox" value="{{ $form->notificationEnum::EMAIL }}" class="mr-2"
                             wire:model="form.notifications">
