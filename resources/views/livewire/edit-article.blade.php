@@ -31,11 +31,15 @@
             </label>
             <div class="flex items-center">
                 <input type="file" wire:model="form.photo">
-                <div>
+                <div class="text-center">
                     @if ($form->photo)
-                        <img class="w-1/2" src="{{ $form->photo->temporaryUrl() }}" alt="">
+                        <img class="w-1/2 inline" src="{{ $form->photo->temporaryUrl() }}" alt="">
                     @elseif ($form->photo_path)
-                        <img class="w-1/2" src="{{ Storage::url($form->photo_path) }}" alt="">
+                        <img class="w-1/2 inline" src="{{ Storage::url($form->photo_path) }}" alt="">
+                        <div class="mt-3">
+                            <button type="button" class="text-gray-200 p-1 bg-blue-700 hover:bg-blue-900"
+                                wire:click="downloadPhoto">Download</button>
+                        </div>
                     @endif
                 </div>
             </div>
